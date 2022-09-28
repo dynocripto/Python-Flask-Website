@@ -1,0 +1,24 @@
+<head>
+    <title>Page Not Found</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.svg') }}">
+</head>
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/404.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="text">
+        <div>ERROR</div>
+        <h1>404</h1>
+        <hr>
+        <div>Page Not Found</div>
+        <div class="go"><a href="{{ url_for('home') }}">Go Home</a></div>
+    </div>
+    
+    <div class="astronaut">
+        <img src="../static/img/astronauta.png" alt="" class="src">
+    </div>
+
+    <script src="{{ url_for('static', filename='js/404.js') }}"></script>
+{% endblock %}

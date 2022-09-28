@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Bienvenido, {{ current_user.fullname }}</h1>
+    <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    {% endblock %}

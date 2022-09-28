@@ -1,0 +1,25 @@
+{% extends './nav.html' %}
+<head>
+    <title>About</title>
+    {% block customCSS %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.svg') }}">
+        {% endblock %}
+</head>
+
+{% block body %}
+    <h2>We are working on that, be patient</h1>
+    <main class="container">
+        <div class="pacman"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+        <div class="path"></div>
+    </main>
+    <button><a href="{{ url_for('home') }}">Go Home</a></button>
+
+{% endblock %}
