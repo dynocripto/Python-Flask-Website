@@ -2,6 +2,11 @@ body {
     display: block;
 }
 
+.container {
+    position: relative;
+    margin-top: 15%;
+}
+
 h1 {
     margin-top: 5%;
     margin-bottom: 50px;

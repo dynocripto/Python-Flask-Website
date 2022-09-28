@@ -6,7 +6,9 @@
 {% endblock %}
 
 {% block body %}
+   <div class="container">
     <h1>Bienvenido, {{ current_user.fullname }}</h1>
     <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
-    {% endblock %}
+   </div>
+{% endblock %}

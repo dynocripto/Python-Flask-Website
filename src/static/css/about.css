@@ -41,6 +41,7 @@ body {
     position: relative;
     background: transparent;
     z-index: 1;
+    right: 10px;
   }
   .pacman::before, .pacman::after {
     position: absolute;
