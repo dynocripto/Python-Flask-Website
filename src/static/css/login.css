@@ -36,8 +36,8 @@ body {
 
 .signup {
   display: grid;
+  margin-top: 20px;
   grid-template-columns: 1fr 1fr;
-  position: absolute;
   left: 40%;
   bottom: 15%;
 }

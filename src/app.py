@@ -33,32 +33,33 @@ def login():
     if request.method == 'POST':
         # print(request.form['username'])
         # print(request.form['password'])
-        user = User(0, request.form['username'], request.form['password'])
+        user = User(request.form['username'], request.form['password'])
         logged_user = ModelUser.login(db, user)
-        if logged_user != None:
-            if logged_user.password:
-                login_user(logged_user)
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid password...")
-                return render_template('auth/login.html')
-        else:
-            flash("User not found...")
-            return render_template('auth/login.html')
+        # if logged_user != None:
+        #     if logged_user.password:
+        #         return redirect(url_for('home'))
+        #     else:
+        #         flash("Invalid password...")
+        #         return render_template('auth/login.html')
+        # else:
+        #     flash("User not found...")
+        #     return render_template('auth/login.html')
+        print(logged_user)
     else:
         return render_template('auth/login.html')
 
-@app.route('/register', methods=['GET'])
+@app.route('/register', methods=['POST', 'GET'])
 def register():
-    if request.method == 'GET':
-        user = User(0, request.form['username'], request.form['password'])
-        signup_user = ModelUser.login(db, user)
-        if signup_user == None:
-            return render_template('auth/register.html')
-        else:
-            flash("You already have an account")
-            return render_template('auth/login.html')
-    redirect(url_for('login'))
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        fullname = request.form['fullname']
+        cur = db.connection.cursor()
+        cur.execute('''INSERT INTO user (username, password, fullname) 
+        VALUES (%s, %s, %s)''', (username, password, fullname))
+        db.connection.commit()
+        redirect(url_for('login'))
+    return render_template('./auth/register.html')
 
 @app.route('/logout')
 def logout():
@@ -92,7 +93,7 @@ def status_404(error):
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
-    csrf.init_app(app)
+    #csrf.init_app(app)
     app.register_error_handler(401, status_401)
     app.register_error_handler(404, status_404)
     app.run()
